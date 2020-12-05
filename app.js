@@ -12,32 +12,32 @@ searchBtn.addEventListener('click', function(e) {
     getDogs(searchInput);
 });
 
-async function getDogs(input) {
+function getDogs(input) {
     let url = `https://dog.ceo/api/breed/${input}/images/random/5`;
     alert(url);
-    let data = await fetch(url, {
-        method: 'GET',
-        mode: 'cors'
-    });
-    let results = await data.json();
+    // let data = await fetch(url, {
+    //     method: 'GET',
+    //     mode: 'cors'
+    // });
+    // let results = await data.json();
 
-    if(results.status == 'success') {
-        processDogs(results.message);
-    }
-    else {
-        resultConrtainer.innerHTML = '<h2>Breed not found</h2>'
-    }
+    // if(results.status == 'success') {
+    //     processDogs(results.message);
+    // }
+    // else {
+    //     resultConrtainer.innerHTML = '<h2>Breed not found</h2>'
+    // }
 
-    // fetch(link)
-    // .then(response => response.json())
-    // .then(responseData => {
-    //     if(responseData.status == 'success') {
-    //         processDogs(responseData.message);
-    //     }
-    //     else {
-    //         resultConrtainer.innerHTML = '<h2>Breed not found</h2>'
-    //     }
-    // })
+    fetch(url)
+    .then(response => response.json())
+    .then(responseData => {
+        if(responseData.status == 'success') {
+            processDogs(responseData.message);
+        }
+        else {
+            resultConrtainer.innerHTML = '<h2>Breed not found</h2>'
+        }
+    })
     
 }
 

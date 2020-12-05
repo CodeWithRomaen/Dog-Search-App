@@ -13,27 +13,30 @@ searchBtn.addEventListener('click', function(e) {
     getDogs(url);
 });
 
-function getDogs(link) {
-    // let data = await fetch(link);
-    // let results = await data.json();
+async function getDogs(link) {
+    let data = await fetch(link, {
+        method: "GET",
+        mode: "cors"
+    });
+    let results = await data.json();
 
-    // if(results.status == 'success') {
-    //     processDogs(results.message);
-    // }
-    // else {
-    //     resultConrtainer.innerHTML = '<h2>Breed not found</h2>'
-    // }
+    if(results.status == 'success') {
+        processDogs(results.message);
+    }
+    else {
+        resultConrtainer.innerHTML = '<h2>Breed not found</h2>' + results.message +' '+ results.status;
+    }
 
-    fetch(link)
-    .then(response => response.json())
-    .then(responseData => {
-        if(responseData.status == 'success') {
-            processDogs(responseData.message);
-        }
-        else {
-            resultConrtainer.innerHTML = '<h2>Breed not found</h2>'
-        }
-    })
+    // fetch(link)
+    // .then(response => response.json())
+    // .then(responseData => {
+    //     if(responseData.status == 'success') {
+    //         processDogs(responseData.message);
+    //     }
+    //     else {
+    //         resultConrtainer.innerHTML = '<h2>Breed not found</h2>'
+    //     }
+    // })
     
 }
 

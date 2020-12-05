@@ -8,14 +8,13 @@ searchBtn.addEventListener('click', function(e) {
     resultConrtainer.innerHTML = ''
     let searchInput = inputField.value;
     inputField.value = '';
-
-    resultConrtainer.innerHTML = `${searchInput}`;
+    
     getDogs(searchInput);
 });
 
 async function getDogs(input) {
     let url = `https://dog.ceo/api/breed/${input}/images/random/5`;
-
+    alert(url);
     let data = await fetch(url);
     let results = await data.json();
 

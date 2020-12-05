@@ -15,7 +15,10 @@ searchBtn.addEventListener('click', function(e) {
 async function getDogs(input) {
     let url = `https://dog.ceo/api/breed/${input}/images/random/5`;
     alert(url);
-    let data = await fetch(url);
+    let data = await fetch(url, {
+        method: 'GET',
+        mode: 'cors'
+    });
     let results = await data.json();
 
     if(results.status == 'success') {

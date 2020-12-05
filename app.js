@@ -9,22 +9,20 @@ searchBtn.addEventListener('click', function(e) {
     let searchInput = inputField.value;
     inputField.value = '';
 
-    let url = `https://dog.ceo/api/breed/${searchInput}/images/random/5`;
-    getDogs();
+    getDogs(searchInput);
 });
 
-async function getDogs() {
-    let data = await fetch('https://dog.ceo/api/breed/corgi/images/random/5', {
-        method: "GET",
-        mode: "cors"
-    });
+async function getDogs(input) {
+    let url = `https://dog.ceo/api/breed/${input}/images/random/5`;
+
+    let data = await fetch(url);
     let results = await data.json();
 
     if(results.status == 'success') {
         processDogs(results.message);
     }
     else {
-        resultConrtainer.innerHTML = '<h2>Breed not found</h2>' + results.message +' '+ results.status;
+        resultConrtainer.innerHTML = '<h2>Breed not found</h2>'
     }
 
     // fetch(link)

@@ -10,11 +10,11 @@ searchBtn.addEventListener('click', function(e) {
     inputField.value = '';
 
     let url = `https://dog.ceo/api/breed/${searchInput}/images/random/5`;
-    getDogs(url);
+    getDogs();
 });
 
-async function getDogs(link) {
-    let data = await fetch(link, {
+async function getDogs() {
+    let data = await fetch('https://dog.ceo/api/breed/corgi/images/random/5', {
         method: "GET",
         mode: "cors"
     });

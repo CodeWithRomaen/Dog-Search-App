@@ -9,6 +9,7 @@ searchBtn.addEventListener('click', function(e) {
     let searchInput = inputField.value;
     inputField.value = '';
 
+    resultConrtainer.innerHTML = `${searchInput}`;
     getDogs(searchInput);
 });
 
